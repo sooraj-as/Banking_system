@@ -1,0 +1,43 @@
+class User():
+    def __init__(self, name, age, gender, balance):
+        self.name = name
+        self.age = age
+        self.gender = gender
+        self.balance = balance
+
+    def show_details(self):
+        print("Personal details")
+        print("Name:", self.name)
+        print("Age:", self.age)
+        print("Gender:", self.gender)
+
+class Bank(User):
+    def __init__(self, name, age, gender, balance):
+        super().__init__(name, age, gender, balance)
+
+    def deposit(self, amount):
+        self.amount = amount
+        self.balance = self.balance + self.amount
+        print("Account balance has been updated: $", self.balance)
+
+    def withdraw(self,amount):
+        self.amount = amount
+        if self.amount >self.balance:
+            print("insufficient funds | Balance available : $",self.balance)
+        else:
+            self.balance = self.balance - self.amount
+            print("Account balance has been updated :$", self.balance)
+
+    def view_balance(self):
+        self.show_details()
+        print("Account balance :$", self.balance)
+
+
+sooraj = Bank('sooraj', 22, 'male', 0)
+sooraj.show_details()
+sooraj.deposit(100)
+sooraj.deposit(900)
+sooraj.withdraw(500)
+sooraj.deposit(1000)
+sooraj.view_balance()
+
